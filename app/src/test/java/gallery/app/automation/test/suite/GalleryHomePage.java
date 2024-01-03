@@ -5,16 +5,9 @@ import org.openqa.selenium.*;
 
 import java.io.File;
 
-public class GalleryHomePage {
+public class GalleryHomePage implements GalleryNavbar {
     protected WebDriver driver;
-    private final By navLogo = By.cssSelector("img[id='nav-logo']");
-    private final By navTitle = By.cssSelector("h1[id='nav-title-text']");
-    private final By logInButton = By.cssSelector("a[id='login-navlink']");
-    private final By signUpButton = By.cssSelector("a[id='signup-navlink']");
-    private final By logOutButton = By.cssSelector("a[id='logout-navlink']");
-    private final By uploadImageButton = By.cssSelector("a[id='add-image-navlink']");
-    private final By settingsButton = By.cssSelector("a[id='settings-navlink']");
-    private final By userSettingsButton = By.cssSelector("a[id='user-settings-navlink']");
+
     private final By indianTruckImage = By.cssSelector("img[id=" +
             "'https://res.cloudinary.com/ddinmpzrr/image/upload/w_400/v1703781615/octm7jk8lutkexrnmm65.jpg']");
     private final By girlAndGoatImage = By.cssSelector("img[id=" +
