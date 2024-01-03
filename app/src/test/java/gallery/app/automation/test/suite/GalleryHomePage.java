@@ -8,16 +8,11 @@ import java.io.File;
 public class GalleryHomePage implements GalleryNavbar {
     protected WebDriver driver;
 
-    private final By indianTruckImage = By.cssSelector("img[id=" +
-            "'https://res.cloudinary.com/ddinmpzrr/image/upload/w_400/v1703781615/octm7jk8lutkexrnmm65.jpg']");
-    private final By girlAndGoatImage = By.cssSelector("img[id=" +
-            "'https://res.cloudinary.com/ddinmpzrr/image/upload/w_400/v1703781467/polmlpk8iugb6lrfndue.jpg']");
-    private final By legTattoosImage = By.cssSelector("img[id=" +
-            "'https://res.cloudinary.com/ddinmpzrr/image/upload/w_400/v1703781461/s7w8zritrmj5qzj6yays.jpg']");
-    private final By dustbinImage = By.cssSelector("img[id=" +
-            "'https://res.cloudinary.com/ddinmpzrr/image/upload/w_400/v1703781451/lb2jtrormhzlrhdpdhe7.jpg']");
-    private final By noviceMonksImage = By.cssSelector("img[id=" +
-            "'https://res.cloudinary.com/ddinmpzrr/image/upload/w_400/v1703781443/moadwvgvunbnhtappmm8.jpg']");
+    private final By indianTruckImage = By.cssSelector("img[id='image/v1703781615/octm7jk8lutkexrnmm65.jpg']");
+    private final By girlAndGoatImage = By.cssSelector("img[id='image/v1703781467/polmlpk8iugb6lrfndue.jpg']");
+    private final By legTattoosImage = By.cssSelector("img[id='image/v1703781461/s7w8zritrmj5qzj6yays.jpg']");
+    private final By dustbinImage = By.cssSelector("img[id='image/v1703781451/lb2jtrormhzlrhdpdhe7.jpg']");
+    private final By noviceMonksImage = By.cssSelector("img[id='image/v1703781443/moadwvgvunbnhtappmm8.jpg']");
     private final By logInTitle = By.cssSelector("h1[id='login-title']");
     private final By logInUsernameInputField = By.cssSelector("input[id='login-username-input']");
     private final By logInPasswordInputField = By.cssSelector("input[id='login-password-input']");
