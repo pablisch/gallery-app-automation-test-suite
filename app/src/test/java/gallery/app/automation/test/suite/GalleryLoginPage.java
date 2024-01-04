@@ -27,9 +27,8 @@ public class GalleryLoginPage {
         this.driver = driver;
     }
 
-    public void navigate() {
-        driver.get("http://localhost:5173/login");
-    }
+    public void navigate() { driver.get("http://localhost:5173/login"); }
+    public String getPageTitle() { return driver.getTitle(); }
     public By getLoginPageElementBy(String identifier) {
         return switch (identifier) {
             case "loginTitle" -> loginTitleBy;
@@ -49,9 +48,7 @@ public class GalleryLoginPage {
         return element.getText();
     }
 
-    public String getPageTitle() {
-        return driver.getTitle();
-    }
+
 
 
 

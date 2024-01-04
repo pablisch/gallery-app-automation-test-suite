@@ -45,6 +45,9 @@ public class GalleryHomePage {
     public void navigate() {
         driver.get("http://localhost:5173");
     }
+    public String getPageTitle() {
+        return driver.getTitle();
+    }
     public By getImageBy(String identifier) {
         return switch (identifier) {
             case "indianTruck" -> indianTruckImageBy;
@@ -60,10 +63,6 @@ public class GalleryHomePage {
     }
 
 
-
-    public String getPageTitle() {
-        return driver.getTitle();
-    }
 
 
 

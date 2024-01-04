@@ -25,7 +25,7 @@ public class GalleryNavbar {
                case "navTitle" -> navTitleBy;
                case "loginButton" -> loginButtonBy;
                case "signupButton" -> signupButtonBy;
-               case "logOutButton" -> logoutButtonBy;
+               case "logoutButton" -> logoutButtonBy;
                case "uploadImageButton" -> uploadImageButtonBy;
                case "settingsIcon" -> settingsIconBy;
                case "userSettingsIcon" -> userSettingsIconBy;

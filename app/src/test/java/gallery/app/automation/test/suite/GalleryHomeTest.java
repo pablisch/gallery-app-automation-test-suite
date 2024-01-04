@@ -4,12 +4,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GalleryHomeTest {
     private static ChromeDriver driver;
@@ -37,13 +37,26 @@ public class GalleryHomeTest {
         // Assert
         assertEquals("Gallery", homePageTitle);
     }
-    @ParameterizedTest(name = "Test presence of {0} navbar element")
+    @ParameterizedTest(name = "Test presence of {0} navbar element to be {1}")
     @CsvSource({
-            "navLogo",
-            "settingsIcon"
+            "navLogo, true",
+            "settingsIcon, true",
+            "loginButton, true",
+            "signupButton, true",
+            "logoutButton, false",
+            "uploadImageButton, false",
+            "userSettingsIcon, false",
     })
-    void testNavElementPresence(String identifier) {
-        assertTrue(navbar.checkNavElementPresence(identifier));
+    void testNavElementPresence(String identifier, boolean expectedPresence) {
+        try {
+            // If element is found then it is compared against the expectation
+            boolean actualPresence = navbar.checkNavElementPresence(identifier);
+            assertEquals(expectedPresence, actualPresence);
+        } catch (NoSuchElementException e) {
+            // If NoSuchElementException is caught, it means the element was not found and the expectation
+            // is compared against false
+            assertFalse(expectedPresence);
+        }
     }
     @ParameterizedTest(name = "Test text of {0} is {1}")
     @CsvSource({
