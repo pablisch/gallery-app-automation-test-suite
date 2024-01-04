@@ -14,12 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GalleryLoginTest {
     private static ChromeDriver driver;
     private static GalleryLoginPage loginPage;
+    private static GalleryNavbar navbar;
 
     @BeforeAll
     static void launchBrowser() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         loginPage = new GalleryLoginPage(driver);
+        navbar = new GalleryNavbar(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
     }
 
@@ -41,7 +43,7 @@ public class GalleryLoginTest {
             "settingsIcon"
     })
     void testNavElementPresence(String identifier) {
-        assertTrue(loginPage.checkNavElementPresence(identifier));
+        assertTrue(navbar.checkNavElementPresence(identifier));
     }
     @ParameterizedTest(name = "Test text of {0} is {1}")
     @CsvSource({
@@ -50,20 +52,9 @@ public class GalleryLoginTest {
     })
     void testNavElementText(String identifier, String expectedText) {
         // Arrange
-        String element = loginPage.getNavElementText(identifier);
+        String element = navbar.getNavElementText(identifier);
         // Assert
         assertEquals(expectedText, element);
-    }
-    @ParameterizedTest(name = "Test presence of {0} image")
-    @CsvSource({
-            "indianTruck",
-            "girlAndGoat",
-            "legTattoos",
-            "IndianPublicBin",
-            "NoviceBuddhistMonks"
-    })
-    void testImagePresence(String identifier) {
-        assertTrue(loginPage.checkImagePresence(identifier));
     }
 
 

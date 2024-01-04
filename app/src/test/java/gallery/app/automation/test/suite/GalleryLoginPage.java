@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class GalleryLoginPage implements GalleryNavbar {
+public class GalleryLoginPage {
     protected WebDriver driver;
 
     private final By loginTitleBy = By.cssSelector("h1[id='login-title']");
@@ -53,10 +53,6 @@ public class GalleryLoginPage implements GalleryNavbar {
         return driver.getTitle();
     }
 
-    public String getNavTitleText() {
-        WebElement todo = driver.findElement(navTitleBy);
-        return todo.getText();
-    }
 
 
 
@@ -64,10 +60,6 @@ public class GalleryLoginPage implements GalleryNavbar {
 
 
 
-    public String getLogInButtonText() {
-        WebElement loginButton = driver.findElement(navTitleBy);
-        return loginButton.getText();
-    }
 
 
 //    public void addNewTodoItem(String todoValue) {

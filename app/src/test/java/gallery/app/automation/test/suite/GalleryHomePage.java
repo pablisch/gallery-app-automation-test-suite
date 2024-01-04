@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 
 import java.io.File;
 
-public class GalleryHomePage implements GalleryNavbar {
+public class GalleryHomePage {
     protected WebDriver driver;
 
     private final By indianTruckImageBy = By.cssSelector("img[id='image/v1703781615/octm7jk8lutkexrnmm65.jpg']");
@@ -58,26 +58,6 @@ public class GalleryHomePage implements GalleryNavbar {
     public Boolean checkImagePresence(String identifier) {
         return driver.findElement(getImageBy(identifier)).isDisplayed();
     }
-    public By getNavElementBy(String identifier) {
-        return switch (identifier) {
-            case "navLogo" -> navLogoBy;
-            case "navTitle" -> navTitleBy;
-            case "loginButton" -> loginButtonBy;
-            case "signupButton" -> signupButtonBy;
-            case "logOutButton" -> logoutButtonBy;
-            case "uploadImageButton" -> uploadImageButtonBy;
-            case "settingsIcon" -> settingsIconBy;
-            case "userSettingsIcon" -> userSettingsIconBy;
-            default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
-        };
-    }
-    public Boolean checkNavElementPresence(String identifier) {
-        return driver.findElement(getNavElementBy(identifier)).isDisplayed();
-    }
-    public String getNavElementText(String identifier) {
-        WebElement element = driver.findElement(getNavElementBy(identifier));
-        return element.getText();
-    }
 
 
 
@@ -85,10 +65,6 @@ public class GalleryHomePage implements GalleryNavbar {
         return driver.getTitle();
     }
 
-    public String getNavTitleText() {
-        WebElement todo = driver.findElement(navTitleBy);
-        return todo.getText();
-    }
 
 
 
@@ -96,10 +72,6 @@ public class GalleryHomePage implements GalleryNavbar {
 
 
 
-    public String getLogInButtonText() {
-        WebElement logInButton = driver.findElement(navTitleBy);
-        return logInButton.getText();
-    }
 
 
 //    public void addNewTodoItem(String todoValue) {
