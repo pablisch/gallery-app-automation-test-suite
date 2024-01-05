@@ -130,6 +130,8 @@ public class GallerySignupTest {
     @DisplayName("Test error message after failed signup")
     @ParameterizedTest(name = "Test name {0}, username {1}, email {2}, password {3} and expect {4}")
     @CsvSource({
+            "Anika, Aisha, anika@example.com, Password123, That username is already taken",
+            "Anika, Anika, aisha@example.com, Password123, Please use a different email address",
             "AnikaAnikaAnikaAnikaAnikaA, Anika, anika@example.com, Password123, Name can be a maximum of 25 characters",
             "Anika, An, anika@example.com, Password123, Username must be between 3 and 12 characters",
             "Anika, AnikaAnikaAni, anika@example.com, Password123, Username must be between 3 and 12 characters",
