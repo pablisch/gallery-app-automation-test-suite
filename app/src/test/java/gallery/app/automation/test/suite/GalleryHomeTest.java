@@ -82,23 +82,6 @@ public class GalleryHomeTest {
         assertTrue(homePage.checkImagePresence(identifier));
     }
 
-
-
-//    @DisplayName("Create new todo for plain text, single char, accented chars and emojis")
-//    @ParameterizedTest(name = "Creates new todo with text {0}")
-//    @CsvSource({
-//            "Make tests",
-//            "X",
-//            "Héłlö",
-//            "⭐"
-//    })
-//    void testNewTodos(String text) {
-//        // Arrange
-//        // Act
-//        // Assert
-//    }
-
-
     @AfterEach
     void clearStorage() {
         driver.navigate().refresh();

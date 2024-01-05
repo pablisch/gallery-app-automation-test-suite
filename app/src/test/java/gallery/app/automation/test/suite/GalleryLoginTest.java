@@ -26,7 +26,7 @@ public class GalleryLoginTest {
     }
 
     @BeforeEach
-    void loadGalleryHomePage() {
+    void loadGalleryLoginPage() {
         loginPage.navigate();
     }
 

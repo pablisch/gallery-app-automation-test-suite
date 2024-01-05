@@ -18,13 +18,6 @@ public class GalleryLoginPage {
     private final By loginPasswordInputFieldBy = By.cssSelector("input[id='login-password-input']");
     private final By loginSubmitBtnBy = By.cssSelector("button[id='login-submit-btn']");
     private final By errorMessageBy = By.cssSelector("p[id='error-message']");
-    private final By signUpTitleBy = By.cssSelector("h1[id='signup-title']");
-    private final By signUpNameInputFieldBy = By.cssSelector("input[id='signup-name-input']");
-    private final By signUpUsernameInputFieldBy = By.cssSelector("input[id='signup-username-input']");
-    private final By signUpEmailInputFieldBy = By.cssSelector("input[id='signup-email-input']");
-    private final By signUpPasswordInputFieldBy = By.cssSelector("input[id='signup-password-input']");
-    private final By signUpAvatarBtnBy = By.cssSelector("button[id='avatar-image-upload-select']");
-    private final By signUpSubmitBtnBy = By.cssSelector("button[id='sign-up-submit-button']");
     private final By imageUploadTitleBy = By.cssSelector("h1[id='image-upload-title']");
     private final By imageUploadSubmitBtnBy = By.cssSelector("button[id='image-upload-submit-btn']");
 
@@ -85,29 +78,5 @@ public class GalleryLoginPage {
         WebElement loginBtn = driver.findElement(loginSubmitBtnBy);
         return !loginBtn.isEnabled();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-//    public void addNewTodoItem(String todoValue) {
-//        WebElement newTodoInput = driver.findElement(newTodoInputBy);
-//        newTodoInput.sendKeys(todoValue);
-//        newTodoInput.sendKeys(Keys.ENTER);
-//    }
-
-    //    public String getTodoText(int index) {
-//        WebElement todo = driver.findElement(getTodoLabelSelector(index));
-//        return todo.getText();
-//    }
-
-
 
 }
