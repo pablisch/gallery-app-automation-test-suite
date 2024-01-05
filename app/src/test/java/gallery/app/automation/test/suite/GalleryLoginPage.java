@@ -11,6 +11,7 @@ import java.time.Duration;
 public class GalleryLoginPage {
     protected WebDriver driver;
 
+    private final String pageTitle = "Gallery Login";
     private final By loginTitleBy = By.cssSelector("h1[id='login-title']");
     private final By loginUsernameLabelBy = By.cssSelector("label[for='login-username-input']");
     private final By loginUsernameInputFieldBy = By.cssSelector("input[id='login-username-input']");
@@ -26,7 +27,11 @@ public class GalleryLoginPage {
     }
 
     public void navigate() { driver.get("http://localhost:5173/login"); }
-    public String getPageTitle() { return driver.getTitle(); }
+    public String getPageTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.titleIs("Gallery Login"));
+        return driver.getTitle();
+    }
     public By getLoginPageElementBy(String identifier) {
         return switch (identifier) {
             case "loginTitle" -> loginTitleBy;

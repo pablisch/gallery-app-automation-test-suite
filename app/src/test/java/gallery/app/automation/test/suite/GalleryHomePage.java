@@ -1,6 +1,10 @@
 package gallery.app.automation.test.suite;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class GalleryHomePage {
     protected WebDriver driver;
@@ -19,6 +23,8 @@ public class GalleryHomePage {
         driver.get("http://localhost:5173");
     }
     public String getPageTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.titleIs("Gallery"));
         return driver.getTitle();
     }
     public By getImageBy(String identifier) {

@@ -108,9 +108,15 @@ public class GallerySignupTest {
     @DisplayName("Test navigate to main feed after signup")
     @ParameterizedTest(name = "Test name {0}, username {1}, email {2} and password {3}")
     @CsvSource({
-            "Sam, Sam, sam@example.com, 1Qwerty!",
-            "Ivor, Ivor, ivortheengine@example.com, VeryStrongPa55word",
+            "Mi, Minna, minna@example.com, A1aaaaaa",
+            "MinnaMinnaMinnaMinnaMinna, Minna, minna@example.com, A1aaaaaa",
+            "Minna, Min, minna@example.com, A1aaaaaa",
+            "Minna, MinnaMinnaMi, minna@example.com, A1aaaaaa",
+            "Minna, MinnaMinnaM1, minna@example.com, A1aaaaaa",
+            "Minna, Minna, 1@e.co, A1aaaaaa",
             "Minna, Minna, minna@example.com, A1aaaaaa",
+            "Minna, Minna, minna@example.com, AAAAAA1a",
+            "Minna, Minna, minna@example.com, A111111a",
     })
     void testSuccessfulSignup(String name, String username, String email, String password) {
         // Act

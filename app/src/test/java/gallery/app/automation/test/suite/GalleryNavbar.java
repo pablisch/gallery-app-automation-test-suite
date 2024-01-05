@@ -39,4 +39,7 @@ public class GalleryNavbar {
           WebElement element = driver.findElement(getNavElementBy(identifier));
           return element.getText();
      }
+     public void clickNavLink(String identifier) {
+          driver.findElement(getNavElementBy(identifier)).click();
+     }
 }

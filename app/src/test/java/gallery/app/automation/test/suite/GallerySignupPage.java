@@ -24,14 +24,24 @@ public class GallerySignupPage {
     private final By signupAvatarBtnLabelBy = By.cssSelector("label[for='file-input']");
     private final By signupAvatarBtnBy = By.cssSelector("button[id='avatar-image-upload-select']");
     private final By signupSubmitBtnBy = By.cssSelector("button[id='signup-submit-button']");
+    private final By dataResetBy = By.cssSelector("pre[style^='word-wrap']");
+
 
     public GallerySignupPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void navigate() { driver.get("http://localhost:5173/signup"); }
-    public void resetDbData() { driver.get("http://localhost:8080/api/v1.0/testData/reset"); }
-    public String getPageTitle() { return driver.getTitle(); }
+    public void resetDbData() {
+        driver.get("http://localhost:8080/api/v1.0/testData/reset");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.presenceOfElementLocated(dataResetBy));
+    }
+    public String getPageTitle() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.titleIs("Gallery Sign Up"));
+        return driver.getTitle();
+    }
     public By getSignupPageElementBy(String identifier) {
         return switch (identifier) {
             case "signupTitle" -> signupTitleBy;

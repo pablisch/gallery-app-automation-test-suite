@@ -41,10 +41,10 @@ public class GalleryHomeTest {
     @CsvSource({
             "navLogo, true",
             "settingsIcon, true",
-            "loginButton, true",
-            "signupButton, true",
-            "logoutButton, false",
-            "uploadImageButton, false",
+            "loginBtn, true",
+            "signupBtn, true",
+            "logoutBtn, false",
+            "uploadImageBtn, false",
             "userSettingsIcon, false",
     })
     void testNavElementPresence(String identifier, boolean expectedPresence) {
@@ -61,8 +61,8 @@ public class GalleryHomeTest {
     @ParameterizedTest(name = "Test text of {0} is {1}")
     @CsvSource({
             "navTitle, Gallery",
-            "loginButton, Log in",
-            "signupButton, Sign up"
+            "loginBtn, Log in",
+            "signupBtn, Sign up"
     })
     void testNavElementText(String identifier, String expectedText) {
         // Arrange
