@@ -8,10 +8,10 @@ public class GalleryNavbar {
      protected WebDriver driver;
      private final By navLogoBy = By.cssSelector("img[id='nav-logo']");
      private final By navTitleBy = By.cssSelector("h1[id='nav-title-text']");
-     private final By loginButtonBy = By.cssSelector("a[id='login-navlink']");
-     private final By signupButtonBy = By.cssSelector("a[id='signup-navlink']");
-     private final By logoutButtonBy = By.cssSelector("a[id='logout-navlink']");
-     private final By uploadImageButtonBy = By.cssSelector("a[id='add-image-navlink']");
+     private final By loginBtnBy = By.cssSelector("a[id='login-navlink']");
+     private final By signupBtnBy = By.cssSelector("a[id='signup-navlink']");
+     private final By logoutBtnBy = By.cssSelector("a[id='logout-navlink']");
+     private final By uploadImageBtnBy = By.cssSelector("a[id='add-image-navlink']");
      private final By settingsIconBy = By.cssSelector("a[id='settings-navlink']");
      private final By userSettingsIconBy = By.cssSelector("a[id='user-settings-navlink']");
 
@@ -23,10 +23,10 @@ public class GalleryNavbar {
           return switch (identifier) {
                case "navLogo" -> navLogoBy;
                case "navTitle" -> navTitleBy;
-               case "loginButton" -> loginButtonBy;
-               case "signupButton" -> signupButtonBy;
-               case "logoutButton" -> logoutButtonBy;
-               case "uploadImageButton" -> uploadImageButtonBy;
+               case "loginBtn" -> loginBtnBy;
+               case "signupBtn" -> signupBtnBy;
+               case "logoutBtn" -> logoutBtnBy;
+               case "uploadImageBtn" -> uploadImageBtnBy;
                case "settingsIcon" -> settingsIconBy;
                case "userSettingsIcon" -> userSettingsIconBy;
                default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
