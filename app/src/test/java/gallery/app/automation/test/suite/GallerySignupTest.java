@@ -47,7 +47,8 @@ public class GallerySignupTest {
             "signupBtn, false",
             "logoutBtn, false",
             "uploadImageBtn, false",
-            "userSettingsIcon, false",
+            "userSettingsAvatarImage, false",
+            "userSettingsAvatarLetter, false",
     })
     void testNavElementPresence(String identifier, boolean expectedPresence) {
         try {
@@ -120,7 +121,7 @@ public class GallerySignupTest {
     })
     void testSuccessfulSignup(String name, String username, String email, String password) {
         // Act
-        navbar.resetDbData();
+        navbar.resetDbDataAndNavigateToHomePage();
         signupPage.navigate();
         signupPage.completeSignupFormAndSubmit(name, username, email, password);
         String actualPageTitle = signupPage.getPageTitleAfterSignup();

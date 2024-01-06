@@ -23,6 +23,8 @@ public class GalleryLoginTest {
         loginPage = new GalleryLoginPage(driver);
         navbar = new GalleryNavbar(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds((long) 0.2));
+        navbar.resetDbDataAndNavigateToHomePage();
+        navbar.logOut();
     }
 
     @BeforeEach
@@ -46,7 +48,8 @@ public class GalleryLoginTest {
             "signupBtn, true",
             "logoutBtn, false",
             "uploadImageBtn, false",
-            "userSettingsIcon, false",
+            "userSettingsAvatarImage, false",
+            "userSettingsAvatarLetter, false",
     })
     void testNavElementPresence(String identifier, boolean expectedPresence) {
         try {

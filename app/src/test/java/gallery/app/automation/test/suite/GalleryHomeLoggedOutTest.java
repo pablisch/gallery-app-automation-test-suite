@@ -23,6 +23,8 @@ public class GalleryHomeLoggedOutTest {
         homePage = new GalleryHomePage(driver);
         navbar = new GalleryNavbar(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        navbar.resetDbDataAndNavigateToHomePage();
+        navbar.logOut();
     }
 
     @BeforeEach
@@ -46,18 +48,11 @@ public class GalleryHomeLoggedOutTest {
             "signupBtn, true",
             "logoutBtn, false",
             "uploadImageBtn, false",
-            "userSettingsIcon, false",
+            "userSettingsAvatarImage, false",
+            "userSettingsAvatarLetter, false",
     })
     void testNavElementPresence(String identifier, boolean expectedPresence) {
-        try {
-            // If element is found then it is compared against the expectation
-            boolean actualPresence = navbar.checkNavElementPresence(identifier);
-            assertEquals(expectedPresence, actualPresence);
-        } catch (NoSuchElementException e) {
-            // If NoSuchElementException is caught, it means the element was not found and the expectation
-            // is compared against false
-            assertFalse(expectedPresence);
-        }
+        assertEquals(expectedPresence, navbar.checkPresenceOfElement(identifier));
     }
     @DisplayName("Test text of navbar elements")
     @ParameterizedTest(name = "Test text of {0} is {1}")

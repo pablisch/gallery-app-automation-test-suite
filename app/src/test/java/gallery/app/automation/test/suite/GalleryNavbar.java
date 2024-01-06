@@ -22,6 +22,7 @@ public class GalleryNavbar {
      private final By userSettingsAvatarImageBy = By.cssSelector("a[id='user-settings-avatar-image-container']");
       private final By userSettingsAvatarLetterBy = By.cssSelector("a[id='user-settings-avatar-letter-container']");
      private final By dataResetBy = By.cssSelector("pre[style^='word-wrap']");
+     private final By noviceMonksImageBy = By.cssSelector("img[id='image/v1703781443/moadwvgvunbnhtappmm8.jpg']");
 
      public GalleryNavbar(WebDriver driver) {
           this.driver = driver;
@@ -36,15 +37,18 @@ public class GalleryNavbar {
                case "logoutBtn" -> logoutBtnBy;
                case "uploadImageBtn" -> uploadImageBtnBy;
                case "settingsIcon" -> settingsIconBy;
-            case "userSettingsAvatarImage" -> userSettingsAvatarImageBy;
-            case "userSettingsAvatarLetter" -> userSettingsAvatarLetterBy;
+               case "userSettingsAvatarImage" -> userSettingsAvatarImageBy;
+               case "userSettingsAvatarLetter" -> userSettingsAvatarLetterBy;
+               case "noviceMonksImage" -> noviceMonksImageBy;
                default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
           };
      }
-     public void resetDbData() {
+     public void resetDbDataAndNavigateToHomePage() {
           driver.get("http://localhost:8080/api/v1.0/testData/reset");
           WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
           wait.until(ExpectedConditions.presenceOfElementLocated(dataResetBy));
+          driver.get("http://localhost:5173");
+          wait.until(ExpectedConditions.presenceOfElementLocated(noviceMonksImageBy));
      }
      public void hoverOverElement(String identifier) {
           WebElement image = driver.findElement(getElementBy(identifier));
@@ -54,6 +58,14 @@ public class GalleryNavbar {
      public Boolean checkNavElementPresence(String identifier) {
           return driver.findElement(getElementBy(identifier)).isDisplayed();
      }
+     public boolean checkPresenceOfElement(String identifier) {
+          try {
+               WebElement element = driver.findElement(getElementBy(identifier));
+               return element.isDisplayed();
+          } catch (NoSuchElementException e) {
+               return false;
+          }
+     }
      public String getNavElementText(String identifier) {
           WebElement element = driver.findElement(getElementBy(identifier));
           return element.getText();
@@ -62,17 +74,9 @@ public class GalleryNavbar {
           driver.findElement(getElementBy(identifier)).click();
      }
      public void logOut() {
-          if (isElementPresent("logoutBtn")) {
+          if (checkPresenceOfElement("logoutBtn")) {
                driver.findElement(logoutBtnBy).click();
           }
      }
 
-     public boolean isElementPresent(String identifier) {
-          try {
-               WebElement element = driver.findElement(getElementBy(identifier));
-               return element.isDisplayed();
-          } catch (NoSuchElementException e) {
-               return false;
-          }
-     }
 }

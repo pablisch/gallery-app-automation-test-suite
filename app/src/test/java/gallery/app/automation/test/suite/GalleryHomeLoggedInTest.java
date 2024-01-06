@@ -29,14 +29,37 @@ public class GalleryHomeLoggedInTest {
 
     @BeforeEach
     void loadGalleryHomePageAndLogOut() {
-        navbar.resetDbData();
-        homePage.navigate();
+        navbar.resetDbDataAndNavigateToHomePage();
         navbar.logOut();
     }
 
     @Test
-    void testPresenceOfNavElementsWhenLoggedIn() {
-        
+    void testNavElementPresenceWhenLoggedInWithAvatarImage() {
+        // Log in as Billy
+        navbar.clickNavLink("loginBtn");
+        loginPage.completeLoginFormAndSubmit("Billy", "Password123");
+        assertTrue(navbar.checkPresenceOfElement("navLogo"));
+        assertFalse(navbar.checkPresenceOfElement("loginBtn"));
+        assertFalse(navbar.checkPresenceOfElement("signupBtn"));
+        assertTrue(navbar.checkPresenceOfElement("logoutBtn"));
+        assertTrue(navbar.checkPresenceOfElement("uploadImageBtn"));
+        assertFalse(navbar.checkPresenceOfElement("settingsIcon"));
+        assertTrue(navbar.checkPresenceOfElement("userSettingsAvatarImage"));
+        assertFalse(navbar.checkPresenceOfElement("userSettingsAvatarLetter"));
+    }
+    @Test
+    void testNavElementPresenceWhenLoggedInWithoutAvatarImage() {
+        // Log in as Martha
+        navbar.clickNavLink("loginBtn");
+        loginPage.completeLoginFormAndSubmit("Martha", "Password123");
+        assertTrue(navbar.checkPresenceOfElement("navLogo"));
+        assertFalse(navbar.checkPresenceOfElement("loginBtn"));
+        assertFalse(navbar.checkPresenceOfElement("signupBtn"));
+        assertTrue(navbar.checkPresenceOfElement("logoutBtn"));
+        assertTrue(navbar.checkPresenceOfElement("uploadImageBtn"));
+        assertFalse(navbar.checkPresenceOfElement("settingsIcon"));
+        assertTrue(navbar.checkPresenceOfElement("userSettingsAvatarLetter"));
+        assertFalse(navbar.checkPresenceOfElement("userSettingsAvatarImage"));
     }
     @Test
     void testDeletingTruckImageWhenLoggedIn() {
