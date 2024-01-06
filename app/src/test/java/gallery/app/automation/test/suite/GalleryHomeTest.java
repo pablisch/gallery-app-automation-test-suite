@@ -82,11 +82,39 @@ public class GalleryHomeTest {
             "noviceBuddhistMonks"
     })
     void testImagePresence(String identifier) {
-        assertTrue(homePage.checkImagePresence(identifier));
+        assertTrue(homePage.checkPresenceOfElement(identifier));
     }
     @Test
-    void testHoveringOverImage() {
-        homePage.hoverOverImage("indianTruck");
+    void testHoveringOverTruckImage() {
+        navbar.hoverOverElement("navTitle");
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoContainer"));
+        homePage.hoverOverElement("indianTruck");
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoAvatarImage"));
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoAvatarLetter"));
+        assertEquals("Martha", homePage.getElementText("hoverInfoUsername"));
+        assertEquals("0", homePage.getElementText("hoverInfoCommentsNum"));
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoCommentsIcon"));
+        assertEquals("0", homePage.getElementText("hoverInfoLikesNum"));
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoLikesIcon"));
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoLikesOutlineIcon"));
+        navbar.hoverOverElement("navTitle");
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoContainer"));
+    }
+    @Test
+    void testHoveringOverMonksImage() {
+        navbar.hoverOverElement("navTitle");
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoContainer"));
+        homePage.hoverOverElement("noviceBuddhistMonks");
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoAvatarImage"));
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoAvatarLetter"));
+        assertEquals("Pablito", homePage.getElementText("hoverInfoUsername"));
+        assertEquals("2", homePage.getElementText("hoverInfoCommentsNum"));
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoCommentsIcon"));
+        assertEquals("1", homePage.getElementText("hoverInfoLikesNum"));
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoLikesIcon"));
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoLikesOutlineIcon"));
+        navbar.hoverOverElement("navTitle");
+        assertFalse(homePage.checkPresenceOfElement("hoverInfoContainer"));
     }
 
     @AfterEach

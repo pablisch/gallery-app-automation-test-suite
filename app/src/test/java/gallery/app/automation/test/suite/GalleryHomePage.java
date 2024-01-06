@@ -27,7 +27,8 @@ public class GalleryHomePage {
     private final By hoverInfoCommentsNumBy = By.cssSelector("p[id='hover-info-comments-num']");
     private final By hoverInfoCommentsIconBy = By.cssSelector("svg[id='hover-info-comments-icon']");
     private final By hoverInfoLikesNumBy = By.cssSelector("p[id='hover-info-likes-num']");
-    private final By hoverInfoLikeIconBy = By.cssSelector("svg[id='hover-info-likes-icon']");
+    private final By hoverInfoLikesIconBy = By.cssSelector("svg[id='hover-info-likes-icon']");
+    private final By hoverInfoLikesOutlineIconBy = By.cssSelector("svg[id='hover-info-likes-outline-icon']");
 
 
     public GalleryHomePage(WebDriver driver) {
@@ -42,7 +43,7 @@ public class GalleryHomePage {
         wait.until(ExpectedConditions.titleIs("Gallery"));
         return driver.getTitle();
     }
-    public By getImageBy(String identifier) {
+    public By getElementBy(String identifier) {
         return switch (identifier) {
             case "indianTruck" -> indianTruckImageBy;
             case "girlAndGoat" -> girlAndGoatImageBy;
@@ -61,18 +62,27 @@ public class GalleryHomePage {
             case "hoverInfoCommentsNum" -> hoverInfoCommentsNumBy;
             case "hoverInfoCommentsIcon" -> hoverInfoCommentsIconBy;
             case "hoverInfoLikesNum" -> hoverInfoLikesNumBy;
-            case "hoverInfoLikeIcon" -> hoverInfoLikeIconBy;
+            case "hoverInfoLikesIcon" -> hoverInfoLikesIconBy;
+            case "hoverInfoLikesOutlineIcon" -> hoverInfoLikesOutlineIconBy;
             default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
         };
     }
-    public Boolean checkImagePresence(String identifier) {
-        return driver.findElement(getImageBy(identifier)).isDisplayed();
-    }
-    public void hoverOverImage(String identifier) {
-        WebElement image = driver.findElement(getImageBy(identifier));
+    public void hoverOverElement(String identifier) {
+        WebElement image = driver.findElement(getElementBy(identifier));
         Actions actions = new Actions(driver);
         actions.moveToElement(image).build().perform();
-//        Thread.sleep(1000);
+    }
+    public boolean checkPresenceOfElement(String identifier) {
+        try {
+            WebElement element = driver.findElement(getElementBy(identifier));
+            return element.isDisplayed();
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+    public String getElementText(String identifier) {
+        WebElement element = driver.findElement(getElementBy(identifier));
+        return element.getText();
     }
 
 }
