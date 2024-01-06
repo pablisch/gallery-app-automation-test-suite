@@ -147,17 +147,17 @@ public class GallerySignupTest {
             "Anika, Anika, anika@example.com, Password123@, Password may not contain symbols except ! and ?",
             "Anika, Anika, anika@example.com, Password123£, Password may not contain symbols except ! and ?",
             "Anika, Anika, anika@example.com, Password-123, Password may not contain symbols except ! and ?",
-            "Anika, Anika, anika@example.com, Pass123, Password must be at least 8 characters= 1 uppercase= 1 lowercase= and 1 number",
-            "Anika, Anika, anika@example.com, paaaaaa1, Password must be at least 8 characters= 1 uppercase= 1 lowercase= and 1 number",
-            "Anika, Anika, anika@example.com, Paaaaaaa, Password must be at least 8 characters= 1 uppercase= 1 lowercase= and 1 number",
-            "Anika, Anika, anika@example.com, PAAAAAA1, Password must be at least 8 characters= 1 uppercase= 1 lowercase= and 1 number",
-            "Anika, Anika, anika@example.com, P1231231, Password must be at least 8 characters= 1 uppercase= 1 lowercase= and 1 number",
+            "Anika, Anika, anika@example.com, Pass123, Password must be at least 8 characters% 1 uppercase% 1 lowercase% and 1 number",
+            "Anika, Anika, anika@example.com, paaaaaa1, Password must be at least 8 characters% 1 uppercase% 1 lowercase% and 1 number",
+            "Anika, Anika, anika@example.com, Paaaaaaa, Password must be at least 8 characters% 1 uppercase% 1 lowercase% and 1 number",
+            "Anika, Anika, anika@example.com, PAAAAAA1, Password must be at least 8 characters% 1 uppercase% 1 lowercase% and 1 number",
+            "Anika, Anika, anika@example.com, P1231231, Password must be at least 8 characters% 1 uppercase% 1 lowercase% and 1 number",
     })
     void testFailedSignup(String name, String username, String email, String password, String expectedErrorMessage) {
         // Act
         signupPage.completeSignupFormAndSubmit(name, username, email, password);
         String actualErrorMessage = signupPage.getErrorAfterFailedSignup();
-        expectedErrorMessage = expectedErrorMessage.replaceAll("=", ",");
+        expectedErrorMessage = expectedErrorMessage.replaceAll("%", ",");
         // Assert
         assertEquals(expectedErrorMessage, actualErrorMessage);
     }

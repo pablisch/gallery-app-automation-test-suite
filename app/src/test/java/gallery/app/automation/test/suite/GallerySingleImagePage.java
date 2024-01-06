@@ -51,13 +51,23 @@ public class GallerySingleImagePage {
         this.driver = driver;
     }
 
-    public void navigate() {
-        driver.get("http://localhost:5173");
+    public void navigateToImagePage(String identifier) {
+        driver.get("http://localhost:5173/" + getImageId(identifier));
     }
-    public String getPageTitle() {
+    public String getPageTitle(String identifier) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.titleIs("Gallery"));
+        wait.until(ExpectedConditions.titleContains("Gallery"));
         return driver.getTitle();
+    }
+    public String getImageId(String identifier) {
+        return switch (identifier) {
+            case "indianTruck" -> "658da4efff44f399dc310d38";
+            case "girlAndGoat" -> "658da45cff44f399dc310d02";
+            case "legTattoos" -> "658da455ff44f399dc310cff";
+            case "indianPublicBin" -> "658da44cff44f399dc310cf9";
+            case "noviceBuddhistMonks" -> "658da443ff44f399dc310cf6";
+            default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
+        };
     }
     public By getElementBy(String identifier) {
         return switch (identifier) {
