@@ -17,6 +17,9 @@ public class GalleryHomePage {
     private final By noviceMonksImageBy = By.cssSelector("img[id='image/v1703781443/moadwvgvunbnhtappmm8.jpg']");
     private final By deleteIconContainerBy = By.cssSelector("div[id='delete-icon-container']");
     private final By deleteIconBy = By.cssSelector("svg[id='delete-icon']");
+    private final By deleteBtnContainer = By.cssSelector("div[id='delete-btn-container']");
+    private final By cancelDeleteImageBtn = By.cssSelector("button[id='cancel-delete-image-btn']");
+    private final By confirmDeleteImageBtn = By.cssSelector("button[id='confirm-delete-image-btn']");
     private final By hoverInfoContainerBy = By.cssSelector("div[id='hover-info-container']");
     private final By hoverInfoLeftSideBy = By.cssSelector("div[id='hover-info-left-side']");
     private final By hoverInfoRightSideBy = By.cssSelector("div[id='hover-info-right-side']");
@@ -52,6 +55,9 @@ public class GalleryHomePage {
             case "noviceBuddhistMonks" -> noviceMonksImageBy;
             case "deleteIconContainer" -> deleteIconContainerBy;
             case "deleteIcon" -> deleteIconBy;
+            case "deleteBtnContainer" -> deleteBtnContainer;
+            case "cancelDeleteImageBtn" -> cancelDeleteImageBtn;
+            case "confirmDeleteImageBtn" -> confirmDeleteImageBtn;
             case "hoverInfoContainer" -> hoverInfoContainerBy;
             case "hoverInfoLeftSide" -> hoverInfoLeftSideBy;
             case "hoverInfoRightSide" -> hoverInfoRightSideBy;
