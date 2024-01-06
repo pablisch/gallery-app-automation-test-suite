@@ -33,7 +33,7 @@ public class GallerySingleImageLoggedOutTest {
         homePage.navigate();
     }
 
-    @DisplayName("Test title of single image page")
+    @DisplayName("Test title of single image page when accessed from main feed")
     @ParameterizedTest(name = "Test title of {0} image page to be {1}")
     @CsvSource({
             "indianTruck, Gallery - A Tata truck",
@@ -42,7 +42,7 @@ public class GallerySingleImageLoggedOutTest {
             "indianPublicBin, Gallery - Public bin in McLeod Ganj% India",
             "noviceBuddhistMonks, Gallery - Novice monks in Ladakh% India",
     })
-    void testPageTitle(String identifier, String expectedTitle) {
+    void testPageTitleFromFeedPage(String identifier, String expectedTitle) {
         // Arrange
         homePage.clickElement(identifier);
         String pageTitle = imagePage.getPageTitle(identifier);
@@ -50,6 +50,24 @@ public class GallerySingleImageLoggedOutTest {
         // Assert
         assertEquals(expectedTitle, pageTitle);
     }
+    @DisplayName("Test title of single image page when accessed by URL")
+    @ParameterizedTest(name = "Test title of {0} image page to be {1}")
+    @CsvSource({
+            "indianTruck, Gallery - A Tata truck",
+            "girlAndGoat, Gallery - Mariana and a goat",
+            "legTattoos, Gallery - Tree of life leg tattoos",
+            "indianPublicBin, Gallery - Public bin in McLeod Ganj% India",
+            "noviceBuddhistMonks, Gallery - Novice monks in Ladakh% India",
+    })
+    void testPageTitleFromUrlNavigation(String identifier, String expectedTitle) {
+        // Arrange
+        imagePage.navigateToImagePage(identifier, expectedTitle);
+        String pageTitle = imagePage.getPageTitle(identifier);
+        expectedTitle = expectedTitle.replaceAll("%", ",");
+        // Assert
+        assertEquals(expectedTitle, pageTitle);
+    }
+
 //    @DisplayName("Test presence of image elements")
 //    @ParameterizedTest(name = "Test presence of {0} image")
 //    @CsvSource({

@@ -51,8 +51,11 @@ public class GallerySingleImagePage {
         this.driver = driver;
     }
 
-    public void navigateToImagePage(String identifier) {
+    public void navigateToImagePage(String identifier, String expectedTitle) {
+        expectedTitle = expectedTitle.replaceAll("%", ",");
         driver.get("http://localhost:5173/" + getImageId(identifier));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.titleIs(expectedTitle));
     }
     public String getPageTitle(String identifier) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
