@@ -1,6 +1,7 @@
 package gallery.app.automation.test.suite;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -47,5 +48,19 @@ public class GalleryNavbar {
      }
      public void clickNavLink(String identifier) {
           driver.findElement(getElementBy(identifier)).click();
+     }
+     public void logOut() {
+          if (isElementPresent("logoutBtn")) {
+               driver.findElement(logoutBtnBy).click();
+          }
+     }
+
+     public boolean isElementPresent(String identifier) {
+          try {
+               WebElement element = driver.findElement(getElementBy(identifier));
+               return element.isDisplayed();
+          } catch (NoSuchElementException e) {
+               return false;
+          }
      }
 }

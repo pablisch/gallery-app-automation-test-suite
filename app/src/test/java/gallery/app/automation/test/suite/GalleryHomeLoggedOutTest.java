@@ -11,7 +11,7 @@ import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GalleryHomeTest {
+public class GalleryHomeLoggedOutTest {
     private static ChromeDriver driver;
     private static GalleryHomePage homePage;
     private static GalleryNavbar navbar;

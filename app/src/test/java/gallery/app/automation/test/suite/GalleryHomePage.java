@@ -84,5 +84,8 @@ public class GalleryHomePage {
         WebElement element = driver.findElement(getElementBy(identifier));
         return element.getText();
     }
+    public void clickElement(String identifier) {
+        driver.findElement(getElementBy(identifier)).click();
+    }
 
 }
