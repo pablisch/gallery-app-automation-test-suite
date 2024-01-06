@@ -1,6 +1,7 @@
 package gallery.app.automation.test.suite;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,6 +15,20 @@ public class GalleryHomePage {
     private final By legTattoosImageBy = By.cssSelector("img[id='image/v1703781461/s7w8zritrmj5qzj6yays.jpg']");
     private final By dustbinImageBy = By.cssSelector("img[id='image/v1703781451/lb2jtrormhzlrhdpdhe7.jpg']");
     private final By noviceMonksImageBy = By.cssSelector("img[id='image/v1703781443/moadwvgvunbnhtappmm8.jpg']");
+    private final By deleteIconContainerBy = By.cssSelector("div[id='delete-icon-container']");
+    private final By deleteIconBy = By.cssSelector("svg[id='delete-icon']");
+    private final By hoverInfoContainerBy = By.cssSelector("div[id='hover-info-container']");
+    private final By hoverInfoLeftSideBy = By.cssSelector("div[id='hover-info-left-side']");
+    private final By hoverInfoRightSideBy = By.cssSelector("div[id='hover-info-right-side']");
+    private final By hoverInfoAvatarImageBy = By.cssSelector("img[id='hover-info-avatar-image']");
+    private final By hoverInfoAvatarLetterContainerBy = By.cssSelector("div[id='hover-info-avatar-letter-container']");
+    private final By hoverInfoAvatarLetterBy = By.cssSelector("h1[id='hover-info-avatar-letter']");
+    private final By hoverInfoUsernameBy = By.cssSelector("p[id='hover-info-username']");
+    private final By hoverInfoCommentsNumBy = By.cssSelector("p[id='hover-info-comments-num']");
+    private final By hoverInfoCommentsIconBy = By.cssSelector("svg[id='hover-info-comments-icon']");
+    private final By hoverInfoLikesNumBy = By.cssSelector("p[id='hover-info-likes-num']");
+    private final By hoverInfoLikeIconBy = By.cssSelector("svg[id='hover-info-likes-icon']");
+
 
     public GalleryHomePage(WebDriver driver) {
         this.driver = driver;
@@ -32,13 +47,20 @@ public class GalleryHomePage {
             case "indianTruck" -> indianTruckImageBy;
             case "girlAndGoat" -> girlAndGoatImageBy;
             case "legTattoos" -> legTattoosImageBy;
-            case "IndianPublicBin" -> dustbinImageBy;
-            case "NoviceBuddhistMonks" -> noviceMonksImageBy;
+            case "indianPublicBin" -> dustbinImageBy;
+            case "noviceBuddhistMonks" -> noviceMonksImageBy;
+            case "deleteIconContainer" -> deleteIconContainerBy;
             default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
         };
     }
     public Boolean checkImagePresence(String identifier) {
         return driver.findElement(getImageBy(identifier)).isDisplayed();
+    }
+    public void hoverOverImage(String identifier) {
+        WebElement image = driver.findElement(getImageBy(identifier));
+        Actions actions = new Actions(driver);
+        actions.moveToElement(image).build().perform();
+//        Thread.sleep(1000);
     }
 
 }

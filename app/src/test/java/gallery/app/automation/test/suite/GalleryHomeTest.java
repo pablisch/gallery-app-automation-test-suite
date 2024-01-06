@@ -37,6 +37,7 @@ public class GalleryHomeTest {
         // Assert
         assertEquals("Gallery", homePageTitle);
     }
+    @DisplayName("Test presence of navbar elements")
     @ParameterizedTest(name = "Test presence of {0} navbar element to be {1}")
     @CsvSource({
             "navLogo, true",
@@ -58,6 +59,7 @@ public class GalleryHomeTest {
             assertFalse(expectedPresence);
         }
     }
+    @DisplayName("Test text of navbar elements")
     @ParameterizedTest(name = "Test text of {0} is {1}")
     @CsvSource({
             "navTitle, Gallery",
@@ -70,16 +72,21 @@ public class GalleryHomeTest {
         // Assert
         assertEquals(expectedText, element);
     }
+    @DisplayName("Test presence of image elements")
     @ParameterizedTest(name = "Test presence of {0} image")
     @CsvSource({
             "indianTruck",
             "girlAndGoat",
             "legTattoos",
-            "IndianPublicBin",
-            "NoviceBuddhistMonks"
+            "indianPublicBin",
+            "noviceBuddhistMonks"
     })
     void testImagePresence(String identifier) {
         assertTrue(homePage.checkImagePresence(identifier));
+    }
+    @Test
+    void testHoveringOverImage() {
+        homePage.hoverOverImage("indianTruck");
     }
 
     @AfterEach
