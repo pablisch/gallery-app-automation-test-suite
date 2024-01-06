@@ -50,6 +50,18 @@ public class GalleryHomePage {
             case "indianPublicBin" -> dustbinImageBy;
             case "noviceBuddhistMonks" -> noviceMonksImageBy;
             case "deleteIconContainer" -> deleteIconContainerBy;
+            case "deleteIcon" -> deleteIconBy;
+            case "hoverInfoContainer" -> hoverInfoContainerBy;
+            case "hoverInfoLeftSide" -> hoverInfoLeftSideBy;
+            case "hoverInfoRightSide" -> hoverInfoRightSideBy;
+            case "hoverInfoAvatarImage" -> hoverInfoAvatarImageBy;
+            case "hoverInfoAvatarLetterContainer" -> hoverInfoAvatarLetterContainerBy;
+            case "hoverInfoAvatarLetter" -> hoverInfoAvatarLetterBy;
+            case "hoverInfoUsername" -> hoverInfoUsernameBy;
+            case "hoverInfoCommentsNum" -> hoverInfoCommentsNumBy;
+            case "hoverInfoCommentsIcon" -> hoverInfoCommentsIconBy;
+            case "hoverInfoLikesNum" -> hoverInfoLikesNumBy;
+            case "hoverInfoLikeIcon" -> hoverInfoLikeIconBy;
             default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
         };
     }
