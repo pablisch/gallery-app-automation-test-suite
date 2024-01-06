@@ -29,23 +29,40 @@ public class GalleryHomeLoggedInTest {
 
     @BeforeEach
     void loadGalleryHomePageAndLogOut() {
+        navbar.resetDbData();
         homePage.navigate();
         navbar.logOut();
     }
 
-
+    @Test
+    void testPresenceOfNavElementsWhenLoggedIn() {
+        
+    }
     @Test
     void testDeletingTruckImageWhenLoggedIn() {
+        // Log in as Martha
         navbar.clickNavLink("loginBtn");
         loginPage.completeLoginFormAndSubmit("Martha", "Password123");
+        // Assert that delete is absent from other user's images
         homePage.hoverOverElement("noviceBuddhistMonks");
         assertTrue(homePage.checkPresenceOfElement("hoverInfoAvatarImage"));
         assertFalse(homePage.checkPresenceOfElement("deleteIcon"));
+        homePage.hoverOverElement("legTattoos");
+        assertTrue(homePage.checkPresenceOfElement("hoverInfoAvatarImage"));
+        assertFalse(homePage.checkPresenceOfElement("deleteIcon"));
+        // Assert that delete is present on own images, cancel delete and then confirm delete
         homePage.hoverOverElement("indianTruck");
         assertTrue(homePage.checkPresenceOfElement("deleteIcon"));
         homePage.clickElement("deleteIcon");
-        assertTrue(homePage.checkPresenceOfElement("deleteIcon"));
-
+        assertTrue(homePage.checkPresenceOfElement("deleteBtnContainer"));
+        homePage.clickElement("cancelDeleteImageBtn");
+        assertFalse(homePage.checkPresenceOfElement("deleteBtnContainer"));
+        homePage.clickElement("deleteIcon");
+        assertTrue(homePage.checkPresenceOfElement("deleteBtnContainer"));
+        homePage.clickElement("confirmDeleteImageBtn");
+        // Assert absence of deleted image
+        homePage.waitForElementToNotBePresent("indianTruck");
+        assertFalse(homePage.checkPresenceOfElement("indianTruck"));
     }
 
     @AfterEach

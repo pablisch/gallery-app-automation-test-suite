@@ -5,6 +5,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class GalleryNavbar {
      protected WebDriver driver;
@@ -15,7 +19,9 @@ public class GalleryNavbar {
      private final By logoutBtnBy = By.cssSelector("a[id='logout-navlink']");
      private final By uploadImageBtnBy = By.cssSelector("a[id='add-image-navlink']");
      private final By settingsIconBy = By.cssSelector("a[id='settings-navlink']");
-     private final By userSettingsIconBy = By.cssSelector("a[id='user-settings-navlink']");
+     private final By userSettingsAvatarImageBy = By.cssSelector("a[id='user-settings-avatar-image-container']");
+      private final By userSettingsAvatarLetterBy = By.cssSelector("a[id='user-settings-avatar-letter-container']");
+     private final By dataResetBy = By.cssSelector("pre[style^='word-wrap']");
 
      public GalleryNavbar(WebDriver driver) {
           this.driver = driver;
@@ -30,9 +36,15 @@ public class GalleryNavbar {
                case "logoutBtn" -> logoutBtnBy;
                case "uploadImageBtn" -> uploadImageBtnBy;
                case "settingsIcon" -> settingsIconBy;
-               case "userSettingsIcon" -> userSettingsIconBy;
+            case "userSettingsAvatarImage" -> userSettingsAvatarImageBy;
+            case "userSettingsAvatarLetter" -> userSettingsAvatarLetterBy;
                default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
           };
+     }
+     public void resetDbData() {
+          driver.get("http://localhost:8080/api/v1.0/testData/reset");
+          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+          wait.until(ExpectedConditions.presenceOfElementLocated(dataResetBy));
      }
      public void hoverOverElement(String identifier) {
           WebElement image = driver.findElement(getElementBy(identifier));

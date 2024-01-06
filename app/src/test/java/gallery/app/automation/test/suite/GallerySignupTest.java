@@ -120,7 +120,7 @@ public class GallerySignupTest {
     })
     void testSuccessfulSignup(String name, String username, String email, String password) {
         // Act
-        signupPage.resetDbData();
+        navbar.resetDbData();
         signupPage.navigate();
         signupPage.completeSignupFormAndSubmit(name, username, email, password);
         String actualPageTitle = signupPage.getPageTitleAfterSignup();

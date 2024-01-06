@@ -94,4 +94,8 @@ public class GalleryHomePage {
         driver.findElement(getElementBy(identifier)).click();
     }
 
+    public void waitForElementToNotBePresent(String identifier) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(getElementBy(identifier)));
+    }
 }
