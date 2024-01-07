@@ -13,28 +13,13 @@ import java.time.Duration;
 public class GalleryImageUploadPage {
     protected WebDriver driver;
 
-    private final By indianTruckImageBy = By.cssSelector("img[id='image/v1703781615/octm7jk8lutkexrnmm65.jpg']");
-    private final By girlAndGoatImageBy = By.cssSelector("img[id='image/v1703781467/polmlpk8iugb6lrfndue.jpg']");
-    private final By legTattoosImageBy = By.cssSelector("img[id='image/v1703781461/s7w8zritrmj5qzj6yays.jpg']");
-    private final By dustbinImageBy = By.cssSelector("img[id='image/v1703781451/lb2jtrormhzlrhdpdhe7.jpg']");
-    private final By noviceMonksImageBy = By.cssSelector("img[id='image/v1703781443/moadwvgvunbnhtappmm8.jpg']");
-    private final By deleteIconContainerBy = By.cssSelector("div[id='delete-icon-container']");
-    private final By deleteIconBy = By.cssSelector("svg[id='delete-icon']");
-    private final By deleteBtnContainer = By.cssSelector("div[id='delete-btn-container']");
-    private final By cancelDeleteImageBtn = By.cssSelector("button[id='cancel-delete-image-btn']");
-    private final By confirmDeleteImageBtn = By.cssSelector("button[id='confirm-delete-image-btn']");
-    private final By hoverInfoContainerBy = By.cssSelector("div[id='hover-info-container']");
-    private final By hoverInfoLeftSideBy = By.cssSelector("div[id='hover-info-left-side']");
-    private final By hoverInfoRightSideBy = By.cssSelector("div[id='hover-info-right-side']");
-    private final By hoverInfoAvatarImageBy = By.cssSelector("img[id='hover-info-avatar-image']");
-    private final By hoverInfoAvatarLetterContainerBy = By.cssSelector("div[id='hover-info-avatar-letter-container']");
-    private final By hoverInfoAvatarLetterBy = By.cssSelector("h1[id='hover-info-avatar-letter']");
-    private final By hoverInfoUsernameBy = By.cssSelector("p[id='hover-info-username']");
-    private final By hoverInfoCommentsNumBy = By.cssSelector("p[id='hover-info-comments-num']");
-    private final By hoverInfoCommentsIconBy = By.cssSelector("svg[id='hover-info-comments-icon']");
-    private final By hoverInfoLikesNumBy = By.cssSelector("p[id='hover-info-likes-num']");
-    private final By hoverInfoLikesIconBy = By.cssSelector("svg[id='hover-info-likes-icon']");
-    private final By hoverInfoLikesOutlineIconBy = By.cssSelector("svg[id='hover-info-likes-outline-icon']");
+    private final By imageUploadFormBy = By.cssSelector("form[id='image-upload-form']");
+    private final By imageUploadFormTitleBy = By.cssSelector("h1[id='image-upload-title']");
+    private final By imageUploadSelectBtnBy = By.cssSelector("button[id='image-upload-select-btn']");
+    private final By imageUploadDescriptionLabelBy = By.cssSelector("label[for='image-upload-description-input']");
+    private final By imageUploadDescriptionInputBy = By.cssSelector("input[id='image-upload-description-input']");
+    private final By imageUploadSubmitBtnBy = By.cssSelector("button[id='image-upload-submit-btn']");
+    private final By descriptionNoteBy = By.cssSelector("p[id='why-description-note']");
 
 
     public GalleryImageUploadPage(WebDriver driver) {
@@ -51,28 +36,13 @@ public class GalleryImageUploadPage {
     }
     public By getElementBy(String identifier) {
         return switch (identifier) {
-            case "indianTruck" -> indianTruckImageBy;
-            case "girlAndGoat" -> girlAndGoatImageBy;
-            case "legTattoos" -> legTattoosImageBy;
-            case "indianPublicBin" -> dustbinImageBy;
-            case "noviceBuddhistMonks" -> noviceMonksImageBy;
-            case "deleteIconContainer" -> deleteIconContainerBy;
-            case "deleteIcon" -> deleteIconBy;
-            case "deleteBtnContainer" -> deleteBtnContainer;
-            case "cancelDeleteImageBtn" -> cancelDeleteImageBtn;
-            case "confirmDeleteImageBtn" -> confirmDeleteImageBtn;
-            case "hoverInfoContainer" -> hoverInfoContainerBy;
-            case "hoverInfoLeftSide" -> hoverInfoLeftSideBy;
-            case "hoverInfoRightSide" -> hoverInfoRightSideBy;
-            case "hoverInfoAvatarImage" -> hoverInfoAvatarImageBy;
-            case "hoverInfoAvatarLetterContainer" -> hoverInfoAvatarLetterContainerBy;
-            case "hoverInfoAvatarLetter" -> hoverInfoAvatarLetterBy;
-            case "hoverInfoUsername" -> hoverInfoUsernameBy;
-            case "hoverInfoCommentsNum" -> hoverInfoCommentsNumBy;
-            case "hoverInfoCommentsIcon" -> hoverInfoCommentsIconBy;
-            case "hoverInfoLikesNum" -> hoverInfoLikesNumBy;
-            case "hoverInfoLikesIcon" -> hoverInfoLikesIconBy;
-            case "hoverInfoLikesOutlineIcon" -> hoverInfoLikesOutlineIconBy;
+            case "imageUploadForm" -> imageUploadFormBy;
+            case "imageUploadFormTitle" -> imageUploadFormTitleBy;
+            case "imageUploadSelectBtn" -> imageUploadSelectBtnBy;
+            case "imageUploadDescriptionLabel" -> imageUploadDescriptionLabelBy;
+            case "imageUploadDescriptionInput" -> imageUploadDescriptionInputBy;
+            case "imageUploadSubmitBtn" -> imageUploadSubmitBtnBy;
+            case "descriptionNote" -> descriptionNoteBy;
             default -> throw new IllegalArgumentException("Invalid identifier: " + identifier);
         };
     }
