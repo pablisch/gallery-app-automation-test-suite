@@ -81,66 +81,18 @@ public class GalleryImageUploadPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(getElementBy(identifier))));
     }
-    public void typeInElement(String identifier, String text) {
+    public void selectAndTypeInElement(String identifier, String text) {
         WebElement element = driver.findElement(getElementBy(identifier));
         element.sendKeys(text);
     }
     public void selectFile(String path) {
+        WebElement selectBtn = driver.findElement(imageUploadSelectBtnBy);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].classList.remove('custom-file-input')", selectBtn);
         WebElement fileInput = driver.findElement(fileInputBy);
         fileInput.sendKeys(path);
-    }
-    public void typeStringWithRobot(String text) {
-        try {
-            Robot robot = new Robot();
-            typeString(robot, text);
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+        js.executeScript("arguments[0].classList.add('custom-file-input')", selectBtn);
     }
 
-    private void typeString(Robot robot, String text) {
-        for (char c : text.toCharArray()) {
-            int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-            robot.keyPress(keyCode);
-            robot.keyRelease(keyCode);
-        }
-    }
-    public void uploadFileUsingRobot(String filePath) {
-        // Click the file input element to open the system dialogue box
-        driver.findElement(imageUploadSelectBtnBy).click();
-
-        try {
-            // Wait for a short time to ensure the system dialogue box is opened
-            Thread.sleep(1000);
-
-            // Set the clipboard with the file path
-            StringSelection stringSelection = new StringSelection(filePath);
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-
-            // Use Robot to perform keyboard shortcuts (Cmd + V for macOS, Ctrl + V for Windows)
-            Robot robot = new Robot();
-            if (isMacOS()) {
-                robot.keyPress(KeyEvent.VK_META);
-                robot.keyPress(KeyEvent.VK_V);
-                robot.keyRelease(KeyEvent.VK_V);
-                robot.keyRelease(KeyEvent.VK_META);
-            } else {
-                robot.keyPress(KeyEvent.VK_CONTROL);
-                robot.keyPress(KeyEvent.VK_V);
-                robot.keyRelease(KeyEvent.VK_V);
-                robot.keyRelease(KeyEvent.VK_CONTROL);
-            }
-
-            // Press Enter to confirm the file selection
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private boolean isMacOS() {
-        return System.getProperty("os.name").toLowerCase().contains("mac");
-    }
 
 }

@@ -49,11 +49,12 @@ public class GalleryImageUploadTest {
     void testUploadAnImage() throws InterruptedException {
         // Arrange
         loginPage.completeLoginFormAndSubmit("Billy", "Password123");
-//        navbar.clickNavLink("uploadImageBtn");
-//        uploadPage.waitForElementToBePresent("fileInput");
-//        uploadPage.selectFile("/Users/pablojoyce/Desktop/diy_scientist.png");
-
-//        Thread.sleep(5000);
+        navbar.clickNavLink("uploadImageBtn");
+        uploadPage.selectFile("/Users/pablojoyce/Desktop/diy_scientist.png");
+        uploadPage.selectAndTypeInElement("imageUploadDescriptionInput", "diy inventor");
+        Thread.sleep(2000);
+        uploadPage.clickElement("imageUploadSubmitBtn");
+        Thread.sleep(2000);
         // Assert
     }
 
