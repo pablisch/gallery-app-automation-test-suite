@@ -52,9 +52,9 @@ public class GalleryImageUploadTest {
         navbar.clickNavLink("uploadImageBtn");
         uploadPage.selectFile("/Users/pablojoyce/Desktop/diy_scientist.png");
         uploadPage.selectAndTypeInElement("imageUploadDescriptionInput", "diy inventor");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         uploadPage.clickElement("imageUploadSubmitBtn");
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         // Assert
     }
 

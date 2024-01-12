@@ -87,11 +87,11 @@ public class GalleryImageUploadPage {
     }
     public void selectFile(String path) {
         WebElement selectBtn = driver.findElement(imageUploadSelectBtnBy);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].classList.remove('custom-file-input')", selectBtn);
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("arguments[0].classList.remove('custom-file-input')", selectBtn);
         WebElement fileInput = driver.findElement(fileInputBy);
         fileInput.sendKeys(path);
-        js.executeScript("arguments[0].classList.add('custom-file-input')", selectBtn);
+//        js.executeScript("arguments[0].classList.add('custom-file-input')", selectBtn);
     }
 
 
